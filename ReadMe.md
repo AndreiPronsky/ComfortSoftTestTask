@@ -124,12 +124,13 @@ To deploy the application using Docker Compose, follow these steps:
 
    services:
      app:
-       image: ComfortSoftTestTask
-       container_name: ComfortSoftTestTask
+       image: comfort-soft-test-task
+       container_name: comfort-soft-test-task
        ports:
          - "8080:8080"
        volumes:
          - ./data:/data
+
    ```
 
    **Note**: Adjust the `volumes` section as needed to map the directory containing your files.

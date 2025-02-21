@@ -1,0 +1,8 @@
+services:
+  app:
+    image: comfort-soft-test-task
+    container_name: comfort-soft-test-task
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data:/data
