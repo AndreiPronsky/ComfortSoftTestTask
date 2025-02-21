@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class MaxValueResponseDto implements ResponseDto {
+public class SimpleErrorResponseDto implements ResponseDto {
 
-    private Long maxValue;
+    private String message;
 }

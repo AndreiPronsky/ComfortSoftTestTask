@@ -1,7 +1,5 @@
 package org.pronsky.comfortsofttesttask.controller.handler;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.validation.ValidationException;
 import org.pronsky.comfortsofttesttask.service.dto.response.ErrorResponseDto;
 import org.pronsky.comfortsofttesttask.service.exceptions.FailedToReadFileException;
 import org.springframework.http.HttpStatus;
@@ -19,9 +17,9 @@ public class ExceptionHandlerController {
 
     @ExceptionHandler({
             FailedToReadFileException.class,
-            ValidationException.class,
-            NullPointerException.class,})
-    public ResponseEntity<ErrorResponseDto> handleBadRequest(FailedToReadFileException exception, HttpServletRequest request) {
+            NullPointerException.class
+    })
+    public ResponseEntity<ErrorResponseDto> handleBadRequest(FailedToReadFileException exception) {
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(buildErrorResponseBody(BAD_REQUEST_MESSAGE, exception));

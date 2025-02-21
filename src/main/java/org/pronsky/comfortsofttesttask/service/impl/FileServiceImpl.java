@@ -45,6 +45,9 @@ public class FileServiceImpl implements FileService {
             Sheet sheet = workbook.getSheetAt(NUMBER_OF_SHEET);
             for (int i = 0; i < n; i++) {
                 Row row = sheet.getRow(i);
+                if (row == null || row.getPhysicalNumberOfCells() == 0) {
+                    break;
+                }
                 Cell cell = row.getCell(COLUMN_INDEX);
                 if (cell.getCellType() == CellType.NUMERIC) {
                     numbers[i] = (long) cell.getNumericCellValue();

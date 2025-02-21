@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Getter
 @Builder
 @Schema(description = "Error response")
-public class ErrorResponseDto {
+public class ErrorResponseDto implements ResponseDto {
 
     @Schema(description = "Error message", example = "Something went wrong")
     private String error;
