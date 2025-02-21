@@ -1,21 +1,21 @@
-package org.pronsky.comfortsofttesttask.service.dto;
+package org.pronsky.comfortsofttesttask.service.dto.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
 
-@Data
-@AllArgsConstructor
+@Getter
+@Builder
 @Schema(description = "Request Dto co find maximum number in a file")
 public class FindMaxDto {
 
     @Schema(description = "Path to file")
     @NotNull(message = "Path to a file should not be null or blank")
-    private String path;
+    private String localPathToFile;
 
     @Schema(description = "Number of first numbers in the file, among which maximum should be found")
-    @Positive(message = "N must be greater than 0")
-    private Integer n;
+    @Positive(message = "Number must be greater than 0")
+    private Integer numberOfElements;
 }
