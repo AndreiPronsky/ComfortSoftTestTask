@@ -1,6 +1,8 @@
 # Simple Java Project: File Max Number Finder
 
-This is a simple Java project that provides a RESTful API to find the maximum number from a specified number of elements in a file located at a given local path. The project includes Swagger for API documentation and can be deployed using Docker Compose.
+This is a simple Java project that provides a RESTful API to find the maximum number from a specified number of elements
+in a file located at a given local path. The project includes Swagger for API documentation and can be deployed using
+Docker Compose.
 
 ## Table of Contents
 
@@ -99,15 +101,17 @@ The project includes Swagger for interactive API documentation.
 
    Navigate to `http://localhost:8080/swagger-ui.html` in your web browser.
 
-   Here, you can explore the available endpoints, see the request and response structures, and even test the API directly.
+   Here, you can explore the available endpoints, see the request and response structures, and even test the API
+   directly.
 
 ---
 
 ## Deployment with Docker Compose
 
 To deploy the application using Docker Compose, follow these steps:
+1. **If you plan to test the application deployed in the docker container mind that you need to copy your file via Dockerfile**
 
-1. **Build the Docker Image**
+2. **Build the Docker Image**
 
    Ensure you are in the project root directory and run:
 
@@ -115,27 +119,27 @@ To deploy the application using Docker Compose, follow these steps:
    docker build -t ComfortSoftTestTask .
    ```
 
-2. **Create `docker-compose.yaml`**
+3. **Create `docker-compose.yaml`**
 
    Create a `docker-compose.yaml` file with the following content:
 
    ```yaml
-   version: '3.8'
-
    services:
-     app:
-       image: comfort-soft-test-task
-       container_name: comfort-soft-test-task
+     comfort-soft:
+       build:
+         context: .
+       image: 'comfort-soft'
+       container_name: comfort-soft
        ports:
          - "8080:8080"
-       volumes:
-         - ./data:/data
-
+       restart: always
+   volumes:
+     comfort-soft:
    ```
 
    **Note**: Adjust the `volumes` section as needed to map the directory containing your files.
 
-3. **Start the Application with Docker Compose**
+4. **Start the Application with Docker Compose**
 
    ```bash
    docker-compose up -d
@@ -143,7 +147,7 @@ To deploy the application using Docker Compose, follow these steps:
 
    This command will start the application in a Docker container and map port `8080` of the host to the container.
 
-4. **Verify the Deployment**
+5. **Verify the Deployment**
 
    Open your browser and navigate to `http://localhost:8080/swagger-ui.html` to access the Swagger UI.
 
@@ -156,9 +160,9 @@ To deploy the application using Docker Compose, follow these steps:
 - **Method**: `GET`
 - **Description**: Retrieves the maximum number from a specified number of elements in a file.
 - **Header**
-  - `localPathToFile` (String, required): The local path to the file containing numbers.
+    - `localPathToFile` (String, required, default value Test.xlsx): The local path to the file containing numbers.
 - **Parameter**:
-  - `numberOfElements` (Integer, required): The number of elements from the file to consider for finding the maximum.
+    - `numberOfElements` (Integer, required, default value 10): The number of elements from the file to consider for finding the maximum.
 
 - **Responses**:
 
@@ -169,16 +173,9 @@ To deploy the application using Docker Compose, follow these steps:
     - **400 Bad Request**: Invalid input parameters.
       ```json
       {
-        "errors": [
-          {
-            "field": "localPathToFile",
-            "message": "Path to a file should not be null or blank"
-          },
-          {
-            "field": "numberOfElements",
-            "message": "Number must be greater than 0"
-          }
-        ]
+         "error": "Bad request",
+         "timestamp": "2025-02-21T10:49:36.596658006",
+         "className": "FailedToReadFileException"
       }
       ```
     - **500 Internal Server Error**: An unexpected error occurred.
