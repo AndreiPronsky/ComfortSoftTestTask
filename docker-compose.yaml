@@ -1,0 +1,11 @@
+services:
+  comfort-soft:
+    build:
+      context: .
+    image: 'comfort-soft'
+    container_name: comfort-soft
+    ports:
+      - "8080:8080"
+    restart: always
+volumes:
+  comfort-soft:
