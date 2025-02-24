@@ -111,35 +111,7 @@ The project includes Swagger for interactive API documentation.
 To deploy the application using Docker Compose, follow these steps:
 1. **If you plan to test the application deployed in the docker container mind that you need to copy your file via Dockerfile**
 
-2. **Build the Docker Image**
-
-   Ensure you are in the project root directory and run:
-
-   ```bash
-   docker build -t ComfortSoftTestTask .
-   ```
-
-3. **Create `docker-compose.yaml`**
-
-   Create a `docker-compose.yaml` file with the following content:
-
-   ```yaml
-   services:
-     comfort-soft:
-       build:
-         context: .
-       image: 'comfort-soft'
-       container_name: comfort-soft
-       ports:
-         - "8080:8080"
-       restart: always
-   volumes:
-     comfort-soft:
-   ```
-
-   **Note**: Adjust the `volumes` section as needed to map the directory containing your files.
-
-4. **Start the Application with Docker Compose**
+2. **Start the Application with Docker Compose**
 
    ```bash
    docker-compose up -d
@@ -147,7 +119,7 @@ To deploy the application using Docker Compose, follow these steps:
 
    This command will start the application in a Docker container and map port `8080` of the host to the container.
 
-5. **Verify the Deployment**
+3. **Verify the Deployment**
 
    Open your browser and navigate to `http://localhost:8080/swagger-ui.html` to access the Swagger UI.
 
