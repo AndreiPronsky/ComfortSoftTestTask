@@ -39,6 +39,9 @@ public class FileController {
             @ApiResponse(responseCode = "200", description = "Number found",
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = FindMaxDto.class))}),
+            @ApiResponse(responseCode = "400", description = "Bad request",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorResponseDto.class))}),
             @ApiResponse(responseCode = "500", description = "Something went wrong",
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = ErrorResponseDto.class))})

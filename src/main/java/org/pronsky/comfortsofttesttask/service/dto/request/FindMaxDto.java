@@ -9,9 +9,9 @@ import lombok.Getter;
 @Schema(description = "Request Dto co find maximum number in a file")
 public class FindMaxDto {
 
-    @Schema(description = "Path to file")
+    @Schema(description = "Path to file", example = "Test.xlsx")
     private String localPathToFile;
 
-    @Schema(description = "Number of first numbers in the file, among which maximum should be found")
+    @Schema(description = "Number of first numbers in the file, among which maximum should be found", example = "10")
     private Integer numberOfElements;
 }
